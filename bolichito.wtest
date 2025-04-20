@@ -1,33 +1,99 @@
 import objetos.*
 import personas.*
 import bolichito.*
+
+//Lo que le gusta a las personas
+test "A rosa le gusta"{
+    assert.that(rosa.leGusta(remera))
+    assert.that(rosa.leGusta(pelota))
+}
+test "A estefania le gusta"{
+    assert.that(estefania.leGusta(remera))
+    assert.that(estefania.leGusta(biblioteca))
+}
+test "A luisa le gusta"{
+    assert.that(luisa.leGusta(placa))
+    assert.that(luisa.leGusta(munieco))
+}
+test "A juan le gusta"{
+    munieco.pesoAElegir(1500)
+    placa.colorAElegir(pardo)
+    assert.that(juan.leGusta(munieco))
+    assert.that(juan.leGusta(placa))
+}
+
+//Lo que no le gusta a las personas
+test "A rosa no le gusta"{
+    munieco.pesoAElegir(4950)
+    assert.notThat(rosa.leGusta(biblioteca))
+    assert.notThat(rosa.leGusta(munieco))
+}
+test "A estefania no le gusta"{
+    assert.notThat(estefania.leGusta(pelota))
+    assert.notThat(estefania.leGusta(munieco))
+}
+test "A luisa no le gusta"{
+    assert.notThat(luisa.leGusta(remera))
+    assert.notThat(luisa.leGusta(pelota))
+}
+test "A juan no le gusta"{
+    munieco.pesoAElegir(1300)
+    placa.colorAElegir(verde)
+    assert.notThat(juan.leGusta(remera))
+    assert.notThat(juan.leGusta(placa))
+}
+
+//bolichito con las funciones ciertas
 test "bolichito brilla"{
     bolichito.objetoEnMostrador(placa)
     bolichito.objetoEnVidriera(munieco)
     assert.that(bolichito.esBrillante())
 }
-
 test "bolichito es monocromatico"{
     placa.colorAElegir(verde)
     bolichito.objetoEnMostrador(placa)
     bolichito.objetoEnVidriera(biblioteca)
     assert.that(bolichito.esMonocromatico())
 }
-
 test "bolichito esta equilibrado"{
     bolichito.objetoEnMostrador(biblioteca)
     bolichito.objetoEnVidriera(pelota)
     assert.that(bolichito.estaEquilibrado())
 }
-
 test "bolichito tiene objeto exhibido y puede mejorar"{
     bolichito.objetoEnMostrador(pelota)
     bolichito.objetoEnVidriera(biblioteca)
     assert.that(bolichito.objetoExhibidoYPuedeMejorar())
 }
-
-test "bolichito ofrece algo a una persona"{
+test "bolichito puede ofrecer algo a una persona"{
     bolichito.objetoEnMostrador(remera)
     bolichito.objetoEnVidriera(pelota)
     assert.that(bolichito.puedeOfrecerAlgoA(juan))
+}
+
+//bolichito con las funciones no ciertas
+test "bolichito no brilla"{
+    bolichito.objetoEnMostrador(remera)
+    bolichito.objetoEnVidriera(pelota)
+    assert.notThat(bolichito.esBrillante())
+}
+test "bolichito no es monocromatico"{
+    bolichito.objetoEnMostrador(pelota)
+    bolichito.objetoEnVidriera(biblioteca)
+    assert.notThat(bolichito.esMonocromatico())
+}
+test "bolichito no esta equilibrado"{
+    bolichito.objetoEnMostrador(pelota)
+    bolichito.objetoEnVidriera(remera)
+    assert.that(bolichito.estaEquilibrado())
+}
+test "bolichito no tiene objeto exhibido y no puede mejorar"{
+    bolichito.objetoEnMostrador(pelota)
+    bolichito.objetoEnVidriera(remera)
+    assert.notThat(bolichito.objetoExhibidoYPuedeMejorar())
+}
+test "bolichito no puede ofrecer algo a una persona"{
+    bolichito.objetoEnMostrador(cajita)
+    bolichito.objetoEnVidriera(biblioteca)
+    assert.notThat(bolichito.puedeOfrecerAlgoA(juan))
 }

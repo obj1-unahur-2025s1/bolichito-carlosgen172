@@ -11,7 +11,7 @@ object luisa{
 }
 object juan{
     method leGusta(objeto) {
-        return objeto.color().esFuerte() ||
-                objeto.peso() == 1500
+        return objeto.color().esFuerte().negate() ||
+                objeto == placa && objeto.peso() == 1500
     }
 }
