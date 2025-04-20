@@ -1,0 +1,33 @@
+import objetos.*
+import personas.*
+import bolichito.*
+test "bolichito brilla"{
+    bolichito.objetoEnMostrador(placa)
+    bolichito.objetoEnVidriera(munieco)
+    assert.that(bolichito.esBrillante())
+}
+
+test "bolichito es monocromatico"{
+    placa.colorAElegir(verde)
+    bolichito.objetoEnMostrador(placa)
+    bolichito.objetoEnVidriera(biblioteca)
+    assert.that(bolichito.esMonocromatico())
+}
+
+test "bolichito esta equilibrado"{
+    bolichito.objetoEnMostrador(biblioteca)
+    bolichito.objetoEnVidriera(pelota)
+    assert.that(bolichito.estaEquilibrado())
+}
+
+test "bolichito tiene objeto exhibido y puede mejorar"{
+    bolichito.objetoEnMostrador(pelota)
+    bolichito.objetoEnVidriera(biblioteca)
+    assert.that(bolichito.objetoExhibidoYPuedeMejorar())
+}
+
+test "bolichito ofrece algo a una persona"{
+    bolichito.objetoEnMostrador(remera)
+    bolichito.objetoEnVidriera(pelota)
+    assert.that(bolichito.puedeOfrecerAlgoA(juan))
+}
